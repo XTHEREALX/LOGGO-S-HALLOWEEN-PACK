@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Android NDK
-        uses: nttld/setup-ndk@main
+        uses: TheReal733/setup-amogus@main
         id: setup-ndk
         with:
           ndk-version: r15c
