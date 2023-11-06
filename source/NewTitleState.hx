@@ -19,13 +19,14 @@ class NewTitleState extends MusicBeatState
   var BG:FlxSprite;
 
   override function create()
+  {
 
     #if android
-		addVirtualPad(A_B);
-		#end
+    addVirtualPad(A_B);
+    #end
 
     Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
+    Paths.clearUnusedMemory();
 
     FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
@@ -40,9 +41,10 @@ class NewTitleState extends MusicBeatState
 override function update();
 {
   if (controls.ACCEPT)
-			{
-				MusicBeatState.switchState(new MainMenuState());
+      {
+	MusicBeatState.switchState(new MainMenuState());
       }
 
   super.update();
+}
 }
