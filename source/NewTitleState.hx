@@ -39,7 +39,7 @@ class NewTitleState extends MusicBeatState
 }
 
 override function update();
- {
+}{
   if (controls.ACCEPT)
       {
 	MusicBeatState.switchState(new MainMenuState());
@@ -47,4 +47,3 @@ override function update();
 
   super.update();
  }
-}
