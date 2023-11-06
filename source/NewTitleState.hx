@@ -30,7 +30,7 @@ class NewTitleState extends MusicBeatState
 
     FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
-    var BG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/background'));
+    var BG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('TitleImage'));
     BG.updateHitbox();
     BG.screenCenter();
     add(BG);
@@ -39,11 +39,12 @@ class NewTitleState extends MusicBeatState
 }
 
 override function update();
-{
+ {
   if (controls.ACCEPT)
       {
 	MusicBeatState.switchState(new MainMenuState());
       }
 
   super.update();
+ }
 }
