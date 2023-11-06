@@ -47,4 +47,3 @@ override function update();
 
   super.update();
 }
-}
