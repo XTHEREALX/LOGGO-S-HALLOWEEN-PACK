@@ -31,7 +31,7 @@ class NewTitleState extends MusicBeatState
     FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
     var BG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/background'));
-    BG.updateHitbox
+    BG.updateHitbox();
     BG.screenCenter();
     add(BG);
 
