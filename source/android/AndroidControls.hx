@@ -87,7 +87,7 @@ class AndroidControls extends FlxSpriteGroup {
 			case VIRTUALPAD_RIGHT:
 				initControler(4);
 		    }
-		 }case KEYBOARD:// nothing
+		 }}case KEYBOARD:// nothing
 		}
 
 	function initControler(vpadMode:Int) {
