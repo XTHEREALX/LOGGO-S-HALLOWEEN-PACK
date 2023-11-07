@@ -48,13 +48,15 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	var bg:FlxSprite;
+	var BG:FlxSprite;
+	var starsBG:FlxSprite;
+	var logo:FlxSprite;
 	public static var intendedColor:Int;
 	var colorTween:FlxTween;
 
 	override function create()
 	{
-		switch (FreeplaySelectState.freeplayCats[FreeplaySelectState.curCategory].toLowerCase())
+		switch (ImpostorSelectState.freeplayCats[FreeplaySelectState.curCategory].toLowerCase())
 			{
 				case 'loggodx':
 					addWeek(['Tutorial'], 0, 0xFFce3c80, ['gf']);
@@ -151,11 +153,6 @@ class FreeplayState extends MusicBeatState
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		scoreText.visible = false;
 
-		logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
-		logo.x = 734;
-		logo.y = 378;
-		add(logo);
-
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		scoreBG.visible = false;
@@ -165,6 +162,11 @@ class FreeplayState extends MusicBeatState
 		diffText.font = scoreText.font;
 		diffText.visible = false;
 		add(diffText);
+
+		logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
+		logo.x = 734;
+		logo.y = 378;
+		add(logo);
 
 		#if android
                 addVirtualPad(NONE, A_B);
@@ -329,7 +331,7 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new FreeplaySelectState());
+			MusicBeatState.switchState(new ImpostorSelectState());
 		}
 		
 		if(space)
