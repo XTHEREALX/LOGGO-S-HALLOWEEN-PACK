@@ -20,6 +20,9 @@ var categoryIcon:FlxSprite;
         starsBG.scrollFactor.set();
         add(starsBG);
 
+	BG = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Border', 0, 0));
+	add(BG);
+
         categoryIcon = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
 	categoryIcon.updateHitbox();
 	categoryIcon.screenCenter();
