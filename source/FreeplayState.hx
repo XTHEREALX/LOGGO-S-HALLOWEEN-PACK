@@ -115,7 +115,7 @@ class FreeplayState extends MusicBeatState
 			var songText:Alphabet = new Alphabet(20, 320, songs[i].songName, true);
 			songText.isMenuItem = true;
 			songText.targetY = i - curSelected;
-			songText.x = 20;
+			songText.x = 50;
 			grpSongs.add(songText);
 
 			var maxWidth = 980;
@@ -208,7 +208,7 @@ class FreeplayState extends MusicBeatState
 		add(text);
 
                 #if android
-                addVirtualPad(FULL, A_B_C_X_Y_Z);
+                addVirtualPad(UP_DOWN, A_B);
                 #end
 
 		super.create();
