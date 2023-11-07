@@ -121,8 +121,8 @@ class CreditsState extends MusicBeatState
 			var optionText:Alphabet = new Alphabet(FlxG.width / 2, 300, creditsStuff[i][0], !isSelectable);
 			optionText.isMenuItem = true;
 			optionText.targetY = i;
-			optionText.changeX = false;
 			optionText.snapToPosition();
+			optionText.x = 20;
 			grpOptions.add(optionText);
 
 			if(isSelectable) {
