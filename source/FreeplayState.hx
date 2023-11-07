@@ -146,6 +146,11 @@ class FreeplayState extends MusicBeatState
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 		scoreText.visible = false;
 
+		logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
+		logo.x = 0;
+		logo.y = 0;
+		add(logo);
+
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
 		scoreBG.visible = false;
