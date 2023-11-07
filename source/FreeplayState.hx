@@ -147,8 +147,8 @@ class FreeplayState extends MusicBeatState
 		scoreText.visible = false;
 
 		logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
-		logo.x = 0;
-		logo.y = 0;
+		logo.x = 734;
+		logo.y = 378;
 		add(logo);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
