@@ -84,7 +84,7 @@ class OptionsState extends MusicBeatState
 
 		for (i in 0...options.length)
 		{
-			var optionText:Alphabet = new Alphabet(0, 0, options[i], true);
+			var optionText:Alphabet = new Alphabet(20, 20, options[i], true);
 			optionText.y += (100 * (i - (options.length / 2))) + 50;
 			optionText.x = 20;
 			grpOptions.add(optionText);
