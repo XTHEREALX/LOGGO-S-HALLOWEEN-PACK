@@ -76,19 +76,23 @@ class AndroidControls extends FlxSpriteGroup {
 		mode = getModeFromNumber(config.getcontrolmode());
 
 		switch (mode){
-			case HITBOX:
-				initControler(4);
-			case VIRTUALPAD_LEFT:
-				initControler(4);
-			case VIRTUALPAD_CUSTOM:
-				initControler(4);
-			case DUO:
-				initControler(4);
 			case VIRTUALPAD_RIGHT:
+				initControler(0);
+			case VIRTUALPAD_LEFT:
+				initControler(1);
+			case VIRTUALPAD_CUSTOM:
+				initControler(2);
+			case DUO:
+				initControler(3);
+			case HITBOX:
+		    if(ClientPrefs.hitboxmode != 'New'){
 				initControler(4);
+		    }else{
+		    initControler(5);
 		    }
-		 }}case KEYBOARD:// nothing
+			case KEYBOARD:// nothing
 		}
+	}
 
 	function initControler(vpadMode:Int) {
 		switch (vpadMode){
