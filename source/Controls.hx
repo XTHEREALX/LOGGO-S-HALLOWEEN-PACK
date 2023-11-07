@@ -495,7 +495,7 @@ class Controls extends FlxActionSet
 		}
 	}
 
-	public function setVirtualPadNOTES(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, ?Action:FlxActionMode) 
+	public function setVirtualPadNOTES(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, hitbox:FlxHitbox, ?Action:FlxActionMode) 
 	{	
 	 	switch (DPad)
 	 	{
