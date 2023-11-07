@@ -1,27 +1,29 @@
 package;
 
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.addons.display.FlxBackdrop;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
 class ImpostorSelectState extends MusicBeatState{
-    public static var freeplayCats:Array<String> = ['loggodx', 'loggoplus', 'loggodside', 'loggob3', 'loggoneo', 'loggoObjects', 'loggoneo'];
-    public static var curCategory:Int = 0;
-	public var NameAlpha:Alphabet;
-	var grpCats:FlxTypedGroup<Alphabet>;
-	var curSelected:Int = 0;
-	var BG:FlxSprite;
-    var categoryIcon:FlxSprite;
+public static var freeplayCats:Array<String> = ['loggodx', 'loggoplus', 'loggodside', 'loggob3', 'loggoneo', 'loggoObjects', 'loggoneo'];
+public static var curCategory:Int = 0;
+public var NameAlpha:Alphabet;
+var grpCats:FlxTypedGroup<Alphabet>;
+var curSelected:Int = 0;
+var BG:FlxSprite;
+var categoryIcon:FlxSprite;
     override function create(){
-        BG = new FlxSprite().loadGraphic(Paths.image('SelectMenu/BG'));
-		BG.updateHitbox();
-		BG.screenCenter();
-		BG.color = 0xFF00c2ff;
-		add(BG);
+        starsFG = new FlxBackdrop(Paths.image('SpaceBG', 'impostor'), 1, 1, true, true);
+        starsFG.updateHitbox();
+        starsFG.antialiasing = true;
+        starsFG.scrollFactor.set();
+        add(starsFG);
+
         categoryIcon = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
-		categoryIcon.updateHitbox();
-		categoryIcon.screenCenter();
-		add(categoryIcon);
+	categoryIcon.updateHitbox();
+	categoryIcon.screenCenter();
+	add(categoryIcon);
 
         changeSelection();
         super.create();
@@ -40,6 +42,8 @@ class ImpostorSelectState extends MusicBeatState{
         if (controls.ACCEPT){
             MusicBeatState.switchState(new FreeplayState());
         }
+
+	starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
 
         curCategory = curSelected;
 
