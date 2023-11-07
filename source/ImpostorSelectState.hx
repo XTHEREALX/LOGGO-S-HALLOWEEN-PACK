@@ -10,7 +10,7 @@ public static var freeplayCats:Array<String> = ['loggodx', 'loggoplus', 'loggods
 public static var curCategory:Int = 0;
 var grpCats:FlxTypedGroup<Alphabet>;
 var curSelected:Int = 0;
-var starsBG:FlxBackDrop;
+var starsBG:FlxBackdrop;
 var categoryIcon:FlxSprite;
     override function create(){
         starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
