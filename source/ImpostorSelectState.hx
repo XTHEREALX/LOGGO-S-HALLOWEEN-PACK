@@ -8,17 +8,17 @@ import flixel.FlxG;
 class ImpostorSelectState extends MusicBeatState{
 public static var freeplayCats:Array<String> = ['loggodx', 'loggoplus', 'loggodside', 'loggob3', 'loggoneo', 'loggoObjects', 'loggoneo'];
 public static var curCategory:Int = 0;
-public var NameAlpha:Alphabet;
 var grpCats:FlxTypedGroup<Alphabet>;
 var curSelected:Int = 0;
-var BG:FlxSprite;
+var starsBG:FlxBackDrop;
 var categoryIcon:FlxSprite;
     override function create(){
-        starsFG = new FlxBackdrop(Paths.image('SpaceBG', 'impostor'), 1, 1, true, true);
-        starsFG.updateHitbox();
-        starsFG.antialiasing = true;
-        starsFG.scrollFactor.set();
-        add(starsFG);
+        starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
+	starsBG.setPosition(111.3, 67.95);
+        starsBG.antialiasing = true;
+        starsBG.updateHitbox();
+        starsBG.scrollFactor.set();
+        add(starsBG);
 
         categoryIcon = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
 	categoryIcon.updateHitbox();
