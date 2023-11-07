@@ -50,7 +50,7 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	var bg:FlxSprite;
-	var starsBG:FlxSprite;
+	var starsBG:FlxBackdrop;
 	var logo:FlxSprite;
 	public static var intendedColor:Int;
 	var colorTween:FlxTween;
@@ -122,7 +122,7 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(20, 100, songs[i].songName, true, false);
+			var songText:Alphabet = new Alphabet(20, 100, songs[i].songName, true);
 			songText.isMenuItem = true;
 			songText.x = 20;
 			grpSongs.add(songText);
