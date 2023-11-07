@@ -8,6 +8,7 @@ import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
@@ -48,7 +49,7 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	var BG:FlxSprite;
+	var bg:FlxSprite;
 	var starsBG:FlxSprite;
 	var logo:FlxSprite;
 	public static var intendedColor:Int;
@@ -108,16 +109,16 @@ class FreeplayState extends MusicBeatState
         starsBG.scrollFactor.set();
         add(starsBG);
 
-	BG = new FlxSprite().loadGraphic(Paths.image('Freeplay/BG'));
-	BG.updateHitbox();
-	add(BG);
+	bg = new FlxSprite().loadGraphic(Paths.image('Freeplay/BG'));
+	bg.updateHitbox();
+	add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(20, (70 * i) + 30, songs[i].songName, true, false);
+			var songText:Alphabet = new Alphabet(20, 100, songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.x = 20;
 			grpSongs.add(songText);
