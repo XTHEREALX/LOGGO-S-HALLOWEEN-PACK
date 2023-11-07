@@ -100,10 +100,15 @@ class FreeplayState extends MusicBeatState
 		}
 		WeekData.loadTheFirstEnabledMod();
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg);
-		bg.screenCenter();
+	starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
+	starsBG.setPosition(111.3, 67.95);
+        starsBG.updateHitbox();
+        starsBG.scrollFactor.set();
+        add(starsBG);
+
+	BG = new FlxSprite().loadGraphic(Paths.image('Freeplay/BG'));
+	BG.updateHitbox();
+	add(BG);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -219,17 +224,6 @@ class FreeplayState extends MusicBeatState
 		super.closeSubState();
 	}
 
-	/*public function LoadProperPack() // scrapped function
-	{
-		switch (FreeplaySelectState.freeplayCats[FreeplaySelectState.curCategory].toLowerCase())
-			{
-				case 'templatecat':
-					addWeek(['Tutorial'], 0, 0xFFce3c80, ['gf']);
-				case 'templatecattwo':
-					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, 0xFF00dcff, ['dad', 'dad', 'dad']);
-			}
-	}*/
-
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int)
 	{
 		songs.push(new SongMetadata(songName, weekNum, songCharacter, color));
@@ -258,6 +252,9 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
+
+		starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
+
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
