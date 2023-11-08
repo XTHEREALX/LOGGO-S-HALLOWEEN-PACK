@@ -11,6 +11,7 @@ public static var curCategory:Int = 0;
 var grpCats:FlxTypedGroup<Alphabet>;
 var curSelected:Int = 0;
 var starsBG:FlxBackdrop;
+var BG:FlxSprite;
 var categoryIcon:FlxSprite;
     override function create(){
         starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
@@ -62,7 +63,6 @@ var categoryIcon:FlxSprite;
 
 		var bullShit:Int = 0;
 
-		add(NameAlpha);
 		categoryIcon.loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + (freeplayCats[curSelected].toLowerCase())));
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
