@@ -60,11 +60,15 @@ class FreeplayState extends MusicBeatState
 		switch (ImpostorSelectState.freeplayCats[ImpostorSelectState.curCategory].toLowerCase())
 			{
 				case 'loggodx':
-					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-loggodx', 734, 378));
+					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-loggodx'));
+					logo.x = 734;
+					logo.y = 378;
 		                        add(logo);
 					addWeek(['Tutorial'], 0, 0xFFce3c80, ['gf']);
 				case 'loggodside':
-					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-loggodside', 734, 378));
+					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-loggodside'));
+					logo.x = 737;
+					logo.y = 378;
 		                        add(logo);
 					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, 0xff00c3ff, ['dad', 'dad', 'dad']);
 			};
