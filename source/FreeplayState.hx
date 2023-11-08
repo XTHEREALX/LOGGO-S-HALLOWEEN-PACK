@@ -59,8 +59,8 @@ class FreeplayState extends MusicBeatState
 	{
 		switch (ImpostorSelectState.freeplayCats[ImpostorSelectState.curCategory].toLowerCase())
 			{
-				case 'loggodx':
-					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/logo-loggodx'));
+				case 'loggoplus':
+					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/logo-loggoplus'));
 					logo.x = 734;
 					logo.y = 378;
 		                        add(logo);
