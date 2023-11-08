@@ -3,6 +3,7 @@ package;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.display.FlxBackdrop;
 import flixel.FlxSprite;
+import flixel.math.FlxMath;
 import flixel.FlxG;
 
 class ImpostorSelectState extends MusicBeatState{
@@ -21,7 +22,8 @@ var categoryIcon:FlxSprite;
         starsBG.scrollFactor.set();
         add(starsBG);
 
-	BG = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Border', 0, 0));
+	BG = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Border'));
+	BG.screenCenter();
 	add(BG);
 
         categoryIcon = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + freeplayCats[curSelected].toLowerCase()));
