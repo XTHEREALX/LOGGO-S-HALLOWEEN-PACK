@@ -111,7 +111,7 @@ class FreeplayState extends MusicBeatState
 		}
 		WeekData.loadTheFirstEnabledMod();
 
-	starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
+	starsBG = new FlxBackdrop(Paths.image('starsBG'), 1, 1, true, true);
 	starsBG.setPosition(111.3, 67.95);
         starsBG.updateHitbox();
         starsBG.scrollFactor.set();
