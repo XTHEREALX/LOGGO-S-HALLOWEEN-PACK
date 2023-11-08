@@ -15,7 +15,11 @@ var starsBG:FlxBackdrop;
 var BG:FlxSprite;
 var categoryIcon:FlxSprite;
     override function create(){
-        starsBG = new FlxBackdrop(Paths.image('starBG'), 1, 1, true, true);
+
+	Paths.clearStoredMemory();
+	Paths.clearUnusedMemory();
+	
+        starsBG = new FlxBackdrop(Paths.image('starsBG'), 1, 1, true, true);
 	starsBG.setPosition(111.3, 67.95);
         starsBG.antialiasing = true;
         starsBG.updateHitbox();
@@ -30,6 +34,10 @@ var categoryIcon:FlxSprite;
 	categoryIcon.updateHitbox();
 	categoryIcon.screenCenter();
 	add(categoryIcon);
+
+	#if android
+        addVirtualPad(FULL, A_B);
+        #end
 
         changeSelection();
         super.create();
