@@ -86,7 +86,6 @@ class OptionsState extends MusicBeatState
 		{
 			var optionText:Alphabet = new Alphabet(20, 20, options[i], true);
 			optionText.x = 20;
-			optionText.y = 20;
 			grpOptions.add(optionText);
 		}
 
