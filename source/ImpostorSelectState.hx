@@ -73,7 +73,7 @@ var categoryIcon:FlxSprite;
 
 		var bullShit:Int = 0;
 
-		categoryIcon.loadGraphic(Paths.image('SelectMenu/Categories/Logo-' + (freeplayCats[curSelected].toLowerCase())));
+		categoryIcon.loadGraphic(Paths.image('SelectMenu/Categories/logo-' + (freeplayCats[curSelected].toLowerCase())));
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }
