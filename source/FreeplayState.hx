@@ -51,7 +51,6 @@ class FreeplayState extends MusicBeatState
 
 	var bg:FlxSprite;
 	var starsBG:FlxBackdrop;
-	var logo:FlxSprite;
 	public static var intendedColor:Int;
 	var colorTween:FlxTween;
 
@@ -60,16 +59,8 @@ class FreeplayState extends MusicBeatState
 		switch (ImpostorSelectState.freeplayCats[ImpostorSelectState.curCategory].toLowerCase())
 			{
 				case 'loggoplus':
-					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/logo-loggoplus'));
-					logo.x = 734;
-					logo.y = 378;
-		                        add(logo);
 					addWeek(['Tutorial'], 0, 0xFFce3c80, ['gf']);
 				case 'loggodside':
-					logo = new FlxSprite().loadGraphic(Paths.image('SelectMenu/Categories/logo-loggodside'));
-					logo.x = 737;
-					logo.y = 378;
-		                        add(logo);
 					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, 0xff00c3ff, ['dad', 'dad', 'dad']);
 			};
 
