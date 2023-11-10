@@ -7,6 +7,7 @@ import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.math.FlxMath;
@@ -34,6 +35,8 @@ class OptionsState extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
+	var idk:FlxSprite;
+	var starsBG:FlxBackdrop;
 
 	function openSelectedSubstate(label:String) {
 		switch(label) {
@@ -71,21 +74,23 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
-		bg.updateHitbox();
+		starsBG = new FlxBackdrop(Paths.image('starsBG'), 1, 1, true, true);
+	        starsBG.setPosition(111.3, 67.95);
+                starsBG.updateHitbox();
+                starsBG.scrollFactor.set();
+                add(starsBG);
 
-		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg);
+	        idk = new FlxSprite().loadGraphic(Paths.image('Options/idk'));
+	        idk.updateHitbox();
+	        add(idk);
 
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 
 		for (i in 0...options.length)
 		{
-			var optionText:Alphabet = new Alphabet(20, 20, options[i], true);
-			optionText.x = 20;
+			var optionText:Alphabet = new Alphabet(700, 20, options[i], true);
+			optionText.x = 700;
 			grpOptions.add(optionText);
 		}
 
