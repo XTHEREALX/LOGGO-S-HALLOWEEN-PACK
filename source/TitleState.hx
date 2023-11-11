@@ -375,7 +375,7 @@ class TitleState extends MusicBeatState
 		add(credGroup);
 		textGroup = new FlxGroup();
 
-		blackScreen = new FlxSprite().makeGraphic(Paths.image('FlashScreen'));
+		blackScreen = new FlxSprite().makeGraphic(Paths.image('TitleScreen'));
 		credGroup.add(blackScreen);
 
 		credTextShit = new Alphabet(0, 0, "", true);
@@ -484,7 +484,7 @@ class TitleState extends MusicBeatState
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(ClientPrefs.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
-				FlxG.sound.play(Paths.sound('KillSound'), 0.7);
+				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
