@@ -8,17 +8,25 @@ import flixel.util.FlxColor;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
+	var starsBG:FlxBackdrop;
 
 	var warnText:FlxText;
 	override function create()
 	{
 		super.create();
+
+		starsBG = new FlxBackdrop(Paths.image('starsBG'), 1, 1, true, true);
+	        starsBG.setPosition(111.3, 67.95);
+                starsBG.updateHitbox();
+                starsBG.scrollFactor.set();
+                add(starsBG);
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(Paths.image('FlashScreen'));
 		add(bg);
@@ -30,6 +38,8 @@ class FlashingState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
+
 		if(!leftState) {
 			var back:Bool = controls.BACK;
 			if (controls.ACCEPT || back) {
