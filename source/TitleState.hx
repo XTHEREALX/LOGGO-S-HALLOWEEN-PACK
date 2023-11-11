@@ -416,7 +416,7 @@ class TitleState extends MusicBeatState
 			textGroup.remove(textGroup.members[0], true);
 		}
 	}
-
+    }
 	private var sickBeats:Int = 0; //Basically curBeat but won't be skipped if you hold the tab or resize the screen
 	public static var closedState:Bool = false;
 	override function beatHit()
