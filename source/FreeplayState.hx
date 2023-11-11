@@ -57,9 +57,9 @@ class FreeplayState extends MusicBeatState
 		switch (ImpostorSelectState.freeplayCats[ImpostorSelectState.curCategory].toLowerCase())
 			{
 				case 'loggoplus':
-					addWeek(['Tutorial'], 0, 0xFFce3c80, ['gf']);
+					addWeek(['Tutorial'], 0, ['gf']);
 				case 'loggodside':
-					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, 0xff00c3ff, ['dad', 'dad', 'dad']);
+					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, ['dad', 'dad', 'dad']);
 			};
 
 		Paths.clearStoredMemory();
@@ -196,7 +196,7 @@ class FreeplayState extends MusicBeatState
 		var num:Int = 0;
 		for (song in songs)
 		{
-			addSong(song, weekNum, songCharacters[num], weekColor);
+			addSong(song, weekNum, songCharacters[num]);
 			if (songCharacters.length != 1)
 				num++;
 		}
