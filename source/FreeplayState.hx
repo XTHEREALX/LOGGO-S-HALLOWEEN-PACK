@@ -129,6 +129,7 @@ class FreeplayState extends MusicBeatState
 			icon.sprTracker = songText;
 
 			iconArray.push(icon);
+			icon.visible = false;
 			add(icon);
 		}
 		WeekData.setDirectoryFromWeek();
