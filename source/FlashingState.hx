@@ -10,6 +10,7 @@ import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.display.FlxBackdrop;
 import flixel.tweens.FlxTween;
+import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 
 class FlashingState extends MusicBeatState
@@ -28,7 +29,7 @@ class FlashingState extends MusicBeatState
                 starsBG.scrollFactor.set();
                 add(starsBG);
 
-		var bg:FlxSprite = new FlxSprite().makeGraphic(Paths.image('FlashScreen'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('FlashScreen'));
 		add(bg);
 
                 #if android
