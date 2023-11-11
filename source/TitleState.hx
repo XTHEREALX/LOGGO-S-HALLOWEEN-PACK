@@ -170,17 +170,17 @@ class TitleState extends MusicBeatState
 		switch(FlxG.save.data.psychDevsEasterEgg.toUpperCase())
 		{
 			case 'SHADOW':
-				titleJSON.gfx += 210;
-				titleJSON.gfy += 40;
+				titleJSON.gfx += 9999;
+				titleJSON.gfy += 9999;
 			case 'RIVER':
-				titleJSON.gfx += 100;
-				titleJSON.gfy += 20;
+				titleJSON.gfx += 9999;
+				titleJSON.gfy += 9999;
 			case 'SHUBS':
-				titleJSON.gfx += 160;
-				titleJSON.gfy -= 10;
+				titleJSON.gfx += 9999;
+				titleJSON.gfy -= 9999;
 			case 'BBPANZU':
-				titleJSON.gfx += 45;
-				titleJSON.gfy += 100;
+				titleJSON.gfx += 9999;
+				titleJSON.gfy += 9999;
 		}
 		#end
 
@@ -283,6 +283,7 @@ class TitleState extends MusicBeatState
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
+		logoBl.visible = false;
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
@@ -322,11 +323,11 @@ class TitleState extends MusicBeatState
 				gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
+		gfDance.visible = false;
+		
 
 		add(gfDance);
-		gfDance.shader = swagShader.shader;
 		add(logoBl);
-		logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
 		#if (desktop || android && MODS_ALLOWED)
@@ -366,23 +367,15 @@ class TitleState extends MusicBeatState
 		
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
 		titleText.animation.play('idle');
+		titleText.visible = false;
 		titleText.updateHitbox();
-		// titleText.screenCenter(X);
 		add(titleText);
-
-		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
-		logo.screenCenter();
-		logo.antialiasing = ClientPrefs.globalAntialiasing;
-		// add(logo);
-
-		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
-		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		credGroup = new FlxGroup();
 		add(credGroup);
 		textGroup = new FlxGroup();
 
-		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		blackScreen = new FlxSprite().makeGraphic(Paths.image('FlashScreen'));
 		credGroup.add(blackScreen);
 
 		credTextShit = new Alphabet(0, 0, "", true);
@@ -491,7 +484,7 @@ class TitleState extends MusicBeatState
 				if(titleText != null) titleText.animation.play('press');
 
 				FlxG.camera.flash(ClientPrefs.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				FlxG.sound.play(Paths.sound('KillSound'), 0.7);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
