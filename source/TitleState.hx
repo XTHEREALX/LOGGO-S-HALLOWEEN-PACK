@@ -60,6 +60,9 @@ class TitleState extends MusicBeatState
 	var starsBG:FlxBackdrop;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
+	var createCoolText:Alphabet;
+	var addCoolText:Alphabet;
+	var deleteCoolText:Alphabet;
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
