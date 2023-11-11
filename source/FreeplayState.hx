@@ -57,9 +57,9 @@ class FreeplayState extends MusicBeatState
 		switch (ImpostorSelectState.freeplayCats[ImpostorSelectState.curCategory].toLowerCase())
 			{
 				case 'loggoplus':
-					addWeek(['Tutorial'], 0, ['gf']);
+					addWeek(['Tutorial'], 0, 000000, ['gf']);
 				case 'loggodside':
-					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, ['dad', 'dad', 'dad']);
+					addWeek(['Bopeebo', 'Fresh', 'Dad-battle'], 1, 000000, ['dad', 'dad', 'dad']);
 			};
 
 		Paths.clearStoredMemory();
