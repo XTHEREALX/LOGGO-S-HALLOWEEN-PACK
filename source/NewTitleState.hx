@@ -49,11 +49,6 @@ override public function update();
 {
 
   starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
-	
-  if (controls.ACCEPT)
-      {
-	MusicBeatState.switchState(new MainMenuState());
-      }
 
   super.update();
  }
