@@ -149,7 +149,6 @@ class TitleState extends MusicBeatState
 		#end
 	}
 	var danceLeft:Bool = false;
-	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
 
 	function startIntro()
@@ -168,55 +167,15 @@ class TitleState extends MusicBeatState
 		starsBG.setPosition(111.3, 67.95);
 		starsBG.updateHitbox();
 		starsBG.scrollFactor.set();
-		starsBG.visible = false;
+		starsBG.visible = true;
 
 		swagShader = new ColorSwap();
 		background = new FlxSprite().loadGraphic(Paths.image('TitleScreen'));
 	
-		background.visible = false;
+		background.visible = true;
 		
-
 		add(background);
 		add(starsBG);
-
-		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
-		#if (desktop || android && MODS_ALLOWED)
-		var path = SUtil.getPath() + "mods/" + Paths.currentModDirectory + "/images/titleEnter.png";
-		if (!FileSystem.exists(path)){
-			path = SUtil.getPath() + "mods/images/titleEnter.png";
-		}
-		if (!FileSystem.exists(path)){
-			path = SUtil.getPath() + "assets/images/titleEnter.png";
-		}
-		titleText.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
-		#else
-
-		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		#end
-		var animFrames:Array<FlxFrame> = [];
-		@:privateAccess {
-			titleText.animation.findByPrefix(animFrames, "ENTER IDLE");
-			titleText.animation.findByPrefix(animFrames, "ENTER FREEZE");
-		}
-		
-		if (animFrames.length > 0) {
-			newTitle = true;
-			
-			titleText.animation.addByPrefix('idle', "ENTER IDLE", 24);
-			titleText.animation.addByPrefix('press', ClientPrefs.flashing ? "ENTER PRESSED" : "ENTER FREEZE", 24);
-		}
-		else {
-			newTitle = false;
-			
-			titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
-			titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
-		}
-		
-		titleText.antialiasing = ClientPrefs.globalAntialiasing;
-		titleText.animation.play('idle');
-		titleText.visible = false;
-		titleText.updateHitbox();
-		add(titleText);
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -226,14 +185,6 @@ class TitleState extends MusicBeatState
 		credTextShit.screenCenter();
 
 		credTextShit.visible = false;
-
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		add(ngSpr);
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
-		ngSpr.updateHitbox();
-		ngSpr.screenCenter(X);
-		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
@@ -261,13 +212,10 @@ class TitleState extends MusicBeatState
 	var transitioning:Bool = false;
 	private static var playJingle:Bool = false;
 	
-	var newTitle:Bool = false;
 	var titleTimer:Float = 0;
 
 	override function update(elapsed:Float)
 	{
-		starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
-
 		if (FlxG.sound.music != null)
 		{
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -297,33 +245,9 @@ class TitleState extends MusicBeatState
 				pressedEnter = true;
 			#end
 		}
-		
-		if (newTitle) {
-			titleTimer += CoolUtil.boundTo(elapsed, 0, 1);
-			if (titleTimer > 2) titleTimer -= 2;
-		}
-
-		if (initialized && !transitioning && skippedIntro)
-		{
-			if (newTitle && !pressedEnter)
-			{
-				var timer:Float = titleTimer;
-				if (timer >= 1)
-					timer = (-timer) + 2;
-				
-				timer = FlxEase.quadInOut(timer);
-				
-				titleText.color = FlxColor.interpolate(titleTextColors[0], titleTextColors[1], timer);
-				titleText.alpha = FlxMath.lerp(titleTextAlphas[0], titleTextAlphas[1], timer);
-			}
 			
 			if(pressedEnter)
 			{
-				titleText.color = FlxColor.WHITE;
-				titleText.alpha = 1;
-				
-				if(titleText != null) titleText.animation.play('press');
-
 				FlxG.camera.flash(ClientPrefs.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
@@ -351,42 +275,9 @@ class TitleState extends MusicBeatState
 			if(controls.UI_RIGHT) swagShader.hue += elapsed * 0.1;
 		}
 
+		starsBG.x = FlxMath.lerp(starsBG.x, starsBG.x - 0.5, CoolUtil.boundTo(elapsed * 9, 0, 1));
+
 		super.update(elapsed);
-	}
-
-	function createCoolText(textArray:Array<String>, ?offset:Float = 0)
-	{
-		for (i in 0...textArray.length)
-		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true);
-			money.screenCenter(X);
-			money.y += (i * 60) + 200 + offset;
-			if(credGroup != null && textGroup != null) {
-				credGroup.add(money);
-				textGroup.add(money);
-			}
-		}
-	}
-
-	function addMoreText(text:String, ?offset:Float = 0)
-	{
-		if(textGroup != null && credGroup != null) {
-			var coolText:Alphabet = new Alphabet(0, 0, text, true);
-			coolText.screenCenter(X);
-			coolText.y += (textGroup.length * 60) + 200 + offset;
-			credGroup.add(coolText);
-			textGroup.add(coolText);
-		}
-	}
-
-	function deleteCoolText()
-	{
-		while (textGroup.members.length > 0)
-		{
-			credGroup.remove(textGroup.members[0], true);
-			textGroup.remove(textGroup.members[0], true);
-		}
-	}
 }
 	private var sickBeats:Int = 0;
 	public static var closedState:Bool = false;
@@ -413,7 +304,8 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
-				remove(ngSpr);
+				background.visible = true;
+			        starsBG.visible = true;
 				remove(credGroup);
 				FlxG.camera.flash(FlxColor.WHITE, 4);
 			}
