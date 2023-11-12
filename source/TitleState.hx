@@ -456,4 +456,3 @@ class TitleState extends MusicBeatState
 			skippedIntro = true;
 		}
 	}
-}
