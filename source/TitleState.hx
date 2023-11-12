@@ -383,7 +383,7 @@ class TitleState extends MusicBeatState
 			textGroup.remove(textGroup.members[0], true);
 		}
 	}
-
+}
 	private var sickBeats:Int = 0;
 	public static var closedState:Bool = false;
 	override function beatHit()
